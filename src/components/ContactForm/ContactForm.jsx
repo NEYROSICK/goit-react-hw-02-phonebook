@@ -54,7 +54,18 @@ export default class ContactForm extends React.Component {
 
   checkContactNumber = () => {
     return this.props.state.contacts.find(contact => {
-      return contact.number === this.state.number;
+      return (
+        contact.number
+          .trim()
+          .split(' ')
+          .filter(num => num !== '')
+          .join('') ===
+        this.state.number
+          .trim()
+          .split(' ')
+          .filter(num => num !== '')
+          .join('')
+      );
     });
   };
 
@@ -85,6 +96,7 @@ export default class ContactForm extends React.Component {
 
     const nameClone = this.checkContactName();
     const numberClone = this.checkContactNumber();
+    console.log(this.props.state);
 
     if (!this.checkDuplicates(nameClone, numberClone)) {
       return;
