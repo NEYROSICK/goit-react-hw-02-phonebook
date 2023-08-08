@@ -1,0 +1,31 @@
+import PropTypes from 'prop-types';
+import cl from './filter.module.css';
+import Search from 'components/ui/icons/Search';
+
+const Filter = ({ handleChange, state }) => {
+  return (
+    <div className={cl.filter}>
+      <label className={cl.label} htmlFor="filter">
+        Find contacts by name
+      </label>
+      <div className={cl.inputField}>
+        <input
+          className={cl.input}
+          type="text"
+          name="filter"
+          id="filter"
+          onChange={handleChange}
+          value={state.filter}
+        />
+        <Search />
+      </div>
+    </div>
+  );
+};
+
+Filter.propTypes = {
+  handleChange: PropTypes.func.isRequired,
+  state: PropTypes.object.isRequired,
+};
+
+export default Filter;
