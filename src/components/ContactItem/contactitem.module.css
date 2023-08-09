@@ -102,7 +102,7 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  transition: background-color 0.4s;
+  transition: background-color 0.4s, transform 0.2s;
 }
 
 @media (max-width: 430px) {
@@ -113,6 +113,10 @@
 
 .button:hover {
   background-color: #5f68bb;
+}
+
+.button:active {
+  transform: scale(0.9);
 }
 
 .button:hover > .icon {
