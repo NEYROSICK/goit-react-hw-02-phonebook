@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import cl from './filter.module.css';
 import Search from 'components/ui/icons/Search';
 
-const Filter = ({ handleChange, state }) => {
+const Filter = ({ handleFilterChange, state }) => {
   return (
     <div className={cl.filter}>
       <label className={cl.label} htmlFor="filter">
@@ -14,7 +14,7 @@ const Filter = ({ handleChange, state }) => {
           type="text"
           name="filter"
           id="filter"
-          onChange={handleChange}
+          onChange={handleFilterChange}
           value={state.filter}
         />
         <Search />
@@ -24,7 +24,7 @@ const Filter = ({ handleChange, state }) => {
 };
 
 Filter.propTypes = {
-  handleChange: PropTypes.func.isRequired,
+  handleFilterChange: PropTypes.func.isRequired,
   state: PropTypes.object.isRequired,
 };
 

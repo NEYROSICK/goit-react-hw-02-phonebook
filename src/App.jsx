@@ -15,8 +15,18 @@ export default class App extends React.Component {
     this.setState({ contacts: newContacts });
   };
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+  filterContacts = () => {
+    const filteredList = this.state.contacts.filter(contact => {
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
+
+    return filteredList;
+  };
+
+  handleFilterChange = e => {
+    this.setState({ filter: e.target.value });
   };
 
   render() {
@@ -30,10 +40,14 @@ export default class App extends React.Component {
         </Section>
 
         <Section title="Contacts" variant="contacts">
-          <Filter state={this.state} handleChange={this.handleChange} />
+          <Filter
+            state={this.state}
+            handleFilterChange={this.handleFilterChange}
+          />
           <ContactList
             state={this.state}
             updateContacts={this.updateContacts}
+            filteredContacts={this.filterContacts()}
           />
         </Section>
       </>

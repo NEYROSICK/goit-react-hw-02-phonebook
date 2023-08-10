@@ -8,6 +8,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 Notify.init({
   useIcon: false,
+  timeout: 5000,
   fontSize: '14px',
   borderRadius: '20px',
   className: cl.message,
@@ -83,7 +84,7 @@ export default class ContactForm extends React.Component {
 
       if (numberClone) {
         Notify.warning(
-          `Warning! Phone number "${numberClone.number}" is already in your phonebook`
+          `Warning! Contact "${numberClone.name}" in your phonebook already has this number: "${numberClone.number}"`
         );
       }
     } else {
@@ -96,7 +97,6 @@ export default class ContactForm extends React.Component {
 
     const nameClone = this.checkContactName();
     const numberClone = this.checkContactNumber();
-    console.log(this.props.state);
 
     if (!this.checkDuplicates(nameClone, numberClone)) {
       return;
